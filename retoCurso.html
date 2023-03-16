@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <style>
+    .container {
+      background-color: red;
+    }
+
+    .col {
+      border: 2px solid blue;
+    }
+
+    .reto1 {
+      background-color: #00b894;
+    }
+
+    .reto2 {
+      background-color: #fdca6d;
+    }
+
+    .reto3 {
+      background-color: white;
+    }
+
+    .reto3 .row div {
+      background-color: #d62f31;
+      color: white;
+    }
+
+    :is(.reto1, .reto2, .reto3) .row div {
+      border: 1px solid white;
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1>Hello, world!</h1>
+      </div>
+      <div class="col">
+        1
+      </div>
+      <div class="col">
+        2
+      </div>
+    </div>
+  </div>
+  <div class="container reto1">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col"></div>
+    </div>
+  </div>
+  <div class="container reto2">
+    <div class="row">
+      <div class="col-6 col-md-3 col-lg-3">Fila 1/Col 1</div>
+      <div class="col-6 col-md-3 col-lg-3">Fila 1/Col 2</div>
+      <div class="col-6 col-md-3 col-lg-3">Fila 1/Col 3</div>
+      <div class="col-6 col-md-3 col-lg-3">Fila 1/Col 4</div>
+    </div>
+    <div class="row">
+      <div class="col-lg col-md-6 col-sm-12">Fila 2/Col 1</div>
+      <div class="col-lg col-md-6 col-sm-12">Fila 2/Col 2</div>
+      <div class="col-lg col-md-6 col-sm-12">Fila 2/Col 3</div>
+      <div class="col-lg col-md-6 col-sm-12">Fila 2/Col 4</div>
+      <div class="col-lg col-md-6 col-sm-12">Fila 2/Col 5</div>
+      <div class="col-lg col-md-6 col-sm-12">Fila 2/Col 6</div>
+      <div class="col-lg col-md-6 col-sm-12">Fila 2/Col 7</div>
+      <div class="col-lg col-md-6 col-sm-12">Fila 2/Col 8</div>
+      <div class="col-lg col-md-6 col-sm-12">Fila 2/Col 9</div>
+      <div class="col-lg col-md-6 col-sm-12">Fila 2/Col 10</div>
+    </div>
+  </div>
+  <div class="container reto3">
+    <div class="row">
+      <div class="col-sm-12 col-lg-6 offset-sm-0 offset-lg-6">Fila 1/Col 1</div>
+    </div>
+    <div class="row">
+      <div class="col-8 offset-sm-0 offset-lg-2 ">Fila 2/Col 1</div>
+    </div>
+    <div class="row">
+      <div class="col-3 offset-9 offset-sm-9 offset-lg-0">Fila 3/Col 1</div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
