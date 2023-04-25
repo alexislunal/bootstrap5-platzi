@@ -1,0 +1,28 @@
+{
+  "transaccion": false,
+  "errores": {
+    "usuCotiza": {
+      "usuario": "Campo es requerido",
+      "contrasena": "Campo es requerido",
+      "codigoAgente": "Campo es requerido"
+    },
+    "informacionCliente": {
+      "sisa": "Campo debe existir en el json",
+      "marca": "Campo debe existir en el json",
+      "anio": "Campo es requerido",
+      "modelo": "Campo debe existir en el json",
+      "genero": "Campo es requerido",
+      "nombres": "Campo es requerido",
+      "fechaNacimiento": "Campo es requerido",
+      "codigoPostal": "Campo es requerido",
+      "telefono": "Campo es requerido",
+      "correo": "Campo es requerido",
+      "noRecuperadoPorAseguradora": "Campo es requerido",
+      "noFronterizoLegalizado": "Campo es requerido",
+      "usoParticularSinLucro": "Campo es requerido"
+    },
+    "descuento": "Campo es requerido",
+    "formasDePago": "Campo es requerido"
+  }
+}
+

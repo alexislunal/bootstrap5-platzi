@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    :root {
+      --bgColorTooltip-Danger: red;
+      --bgColorTooltip-Info: rgb(241, 238, 18);
+      --bgColorTooltip-Normal: #2E2E2E;
+      --bgColorTooltip-Success: limegreen;
+      --bgColorTooltip-Warning: orange;
+      --textColorTooltip-Danger: white;
+      --textColorTooltip-Info: black;
+      --textColorTooltip-Normal: white;
+      --textColorTooltip-Success: white;
+      --textColorTooltip-Warning: white;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    body {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .iconTooltip {
+      background-color: var(--bgColorTooltip-Danger);
+    }
+    .iconTooltip::after {
+      content: '\2370';
+    }
+
+    .tooltip {
+      cursor: help;
+      display: inline-block;
+      position: relative;
+      text-decoration: underline;
+    }
+    .tooltip .tiptext {
+      background-color: var(--bgColorTooltip-Normal);
+      border-radius: 3px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      color: var(--textColorTooltip-Normal);
+      font-family: Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 0.8rem;
+      padding: 6px;
+      position: absolute;
+      text-align: left;
+      visibility: hidden;
+      width: 120px;
+      z-index: 1;
+    }
+
+    .tooltip.info .tiptext{
+      background-color: var(--bgColorTooltip-Info);
+      color: var(--textColorTooltip-Info);
+    }
+    .tooltip.warning .tiptext{
+      background-color: var(--bgColorTooltip-Warning);
+      color: var(--textColorTooltip-Warning);
+    }
+    .tooltip.danger .tiptext{
+      background-color: var(--bgColorTooltip-Danger);
+      color: var(--textColorTooltip-Danger);
+    }
+    .tooltip.success .tiptext{
+      background-color: var(--bgColorTooltip-Success);
+      color: var(--textColorTooltip-Success);
+    }
+
+    .tooltip .tiptext::after {
+        content: "";
+        position: absolute;
+        border-width: 5px;
+        border-style: solid;
+    }
+    .tooltip:hover .tiptext {
+        visibility: visible;
+    }
+
+    .tooltip.top .tiptext{
+        margin-left: -60px;
+        bottom: 150%;
+        left: 50%;
+    }
+    .tooltip.top .tiptext::after{
+        margin-left: -5px;
+        top: 100%;
+        left: 50%;
+        border-color: var(--bgColorTooltip-Normal) transparent transparent transparent;
+    }
+
+    .tooltip.info.top .tiptext::after {
+      border-color: var(--bgColorTooltip-Info) transparent transparent transparent;
+    }
+
+    .tooltip.warning.top .tiptext::after {
+      border-color: var(--bgColorTooltip-Warning) transparent transparent transparent;
+    }
+
+    .tooltip.danger.top .tiptext::after {
+      border-color: var(--bgColorTooltip-Danger) transparent transparent transparent;
+    }
+
+    .tooltip.success.top .tiptext::after {
+      border-color: var(--bgColorTooltip-Success) transparent transparent transparent;
+    }
+
+    .tooltip.bottom .tiptext{
+        margin-left: -60px;
+        top: 150%;
+        left: 50%;
+    }
+    .tooltip.bottom .tiptext::after{
+        margin-left: -5px;
+        bottom: 100%;
+        left: 50%;
+        border-color: transparent transparent var(--bgColorTooltip-Normal) transparent;
+    }
+
+    .tooltip.info.bottom .tiptext::after {
+      border-color: transparent transparent var(--bgColorTooltip-Info) transparent;
+    }
+
+    .tooltip.warning.bottom .tiptext::after {
+      border-color: transparent transparent var(--bgColorTooltip-Warning) transparent;
+    }
+
+    .tooltip.danger.bottom .tiptext::after {
+      border-color: transparent transparent var(--bgColorTooltip-Danger) transparent;
+    }
+
+    .tooltip.success.bottom .tiptext::after {
+      border-color: transparent transparent var(--bgColorTooltip-Success) transparent;
+    }
+
+    .tooltip.left .tiptext{
+        top: -5px;
+        right: 110%;
+    }
+    .tooltip.left .tiptext::after{
+        margin-top: -5px;
+        top: 50%;
+        left: 100%;
+        border-color: transparent transparent transparent var(--bgColorTooltip-Normal);
+    }
+
+    .tooltip.info.left .tiptext::after {
+      border-color: transparent transparent transparent var(--bgColorTooltip-Info);
+    }
+
+    .tooltip.warning.left .tiptext::after {
+      border-color: transparent transparent transparent var(--bgColorTooltip-Warning);
+    }
+
+    .tooltip.danger.left .tiptext::after {
+      border-color: transparent transparent transparent var(--bgColorTooltip-Danger);
+    }
+
+    .tooltip.success.left .tiptext::after {
+      border-color: transparent transparent transparent var(--bgColorTooltip-Success);
+    }
+
+    .tooltip.right .tiptext{
+        top: -5px;
+        left: 110%;
+    }
+    .tooltip.right .tiptext::after{
+        margin-top: -5px;
+        top: 50%;
+        right: 100%;
+        border-color: transparent var(--bgColorTooltip-Normal) transparent transparent;
+    }
+
+    .tooltip.info.right .tiptext::after {
+      border-color: transparent var(--bgColorTooltip-Info) transparent transparent;
+    }
+
+    .tooltip.warning.right .tiptext::after {
+      border-color: transparent var(--bgColorTooltip-Warning) transparent transparent;
+    }
+
+    .tooltip.danger.right .tiptext::after {
+      border-color: transparent var(--bgColorTooltip-Danger) transparent transparent;
+    }
+
+    .tooltip.success.right .tiptext::after {
+      border-color: transparent var(--bgColorTooltip-Success) transparent transparent;
+    }
+
+
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <select class="form-control">
+        <option value="" disabled="" style="display: none;"> </option>
+        <option value="2000">Per Person $2,000-Per Event $10,000</option>
+        <option value="3000">Per Person $3,000-Per Event $15,000</option>
+        <option value="4000">Per Person $4,000-Per Event $20,000</option>
+        <option value="5000">Per Person $5,000-Per Event $25,000</option>
+        <option value="10000">Per Person $10,000-Per Event $50,000</option>
+        <option value="15000">Per Person $15,000-Per Event $75,000</option>
+        <option value="20000">Per Person $20,000-Per Event $100,000</option>
+      </select>
+
+    <select class="form-control">
+      <option value="" disabled="" style="display: none;"> </option>
+      <option value="0"></option>
+      <option value="50000">$50,000 USD</option>
+      <option value="100000">$100,000 USD</option>
+      <option value="150000">$150,000 USD</option>
+      <option value="200000">$200,000 USD</option>
+      <option value="300000">$300,000 USD</option>
+      <option value="400000">$400,000 USD</option>
+      <option value="500000">$500,000 USD</option>
+      <option value="1000000">$1,000,000 USD</option>
+    </select>
+
+    <select class="form-control">
+      <option value="" disabled="" style="display: none;"> </option>
+      <option value="0">$0 USD (Liability Only)</option>
+      <option value="5000">$5,000 USD</option>
+      <option value="6000">$6,000 USD</option>
+      <option value="7000">$7,000 USD</option>
+      <option value="8000">$8,000 USD</option>
+      <option value="9000">$9,000 USD</option>
+      <option value="10000">$10,000 USD</option>
+      <option value="11000">$11,000 USD</option>
+      <option value="12000">$12,000 USD</option>
+      <option value="13000">$13,000 USD</option>
+      <option value="14000">$14,000 USD</option>
+      <option value="15000">$15,000 USD</option>
+      <option value="16000">$16,000 USD</option>
+      <option value="17000">$17,000 USD</option>
+      <option value="18000">$18,000 USD</option>
+      <option value="19000">$19,000 USD</option>
+      <option value="20000">$20,000 USD</option>
+      <option value="21000">$21,000 USD</option>
+      <option value="22000">$22,000 USD</option>
+      <option value="23000">$23,000 USD</option>
+      <option value="24000">$24,000 USD</option>
+      <option value="25000">$25,000 USD</option>
+      <option value="26000">$26,000 USD</option>
+      <option value="27000">$27,000 USD</option>
+      <option value="28000">$28,000 USD</option>
+      <option value="29000">$29,000 USD</option>
+      <option value="30000">$30,000 USD</option>
+      <option value="31000">$31,000 USD</option>
+      <option value="32000">$32,000 USD</option>
+      <option value="33000">$33,000 USD</option>
+      <option value="34000">$34,000 USD</option>
+      <option value="35000">$35,000 USD</option>
+      <option value="36000">$36,000 USD</option>
+      <option value="37000">$37,000 USD</option>
+      <option value="38000">$38,000 USD</option>
+      <option value="39000">$39,000 USD</option>
+      <option value="40000">$40,000 USD</option>
+      <option value="41000">$41,000 USD</option>
+      <option value="42000">$42,000 USD</option>
+      <option value="43000">$43,000 USD</option>
+      <option value="44000">$44,000 USD</option>
+      <option value="45000">$45,000 USD</option>
+      <option value="46000">$46,000 USD</option>
+      <option value="47000">$47,000 USD</option>
+      <option value="48000">$48,000 USD</option>
+      <option value="49000">$49,000 USD</option>
+      <option value="50000">$50,000 USD</option>
+      <option value="40000">$50,000 USD</option>
+      <option value="41000">$51,000 USD</option>
+      <option value="42000">$52,000 USD</option>
+      <option value="43000">$53,000 USD</option>
+      <option value="44000">$54,000 USD</option>
+      <option value="45000">$55,000 USD</option>
+      <option value="46000">$56,000 USD</option>
+      <option value="47000">$57,000 USD</option>
+      <option value="48000">$58,000 USD</option>
+      <option value="49000">$59,000 USD</option>
+      <option value="50000">$60,000 USD</option>
+      <option value="40000">$70,000 USD</option>
+      <option value="41000">$71,000 USD</option>
+      <option value="42000">$72,000 USD</option>
+      <option value="43000">$73,000 USD</option>
+      <option value="44000">$74,000 USD</option>
+      <option value="45000">$75,000 USD</option>
+      <option value="50000">$100,000 USD</option>
+    </select>
+
+    <span class="iconTooltip">Liability</span>
+
+    <span class="tooltip danger top">Posa el ratón encima de mi
+      <span class="tiptext">Texto del tooltip</span>
+    </span>
+    <span class="tooltip warning left">Posa el ratón encima de mi
+      <span class="tiptext">Texto del tooltip</span>
+    </span>
+    <span class="tooltip danger right">Posa el ratón encima de mi
+      <span class="tiptext">Texto del tooltip</span>
+    </span>
+    <span class="tooltip info bottom">Posa el ratón encima de mi
+      <span class="tiptext">Texto del tooltip</span>
+    </span>
+  </div>
+</body>
+</html>
